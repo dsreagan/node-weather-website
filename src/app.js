@@ -54,14 +54,14 @@ app.get('/help', (req, res) => {
             return res.send({ error })
         }
 
-        forecast(latitude, longitude, (error, {description, temp, precip}) =>{
+        forecast(latitude, longitude, (error, {description, temp, precip, humidity}) =>{
             if (error) {
                 return res.send({ error })
             }
 
             res.send({
                 location: location,
-                forecast: `It is currently ${description}, with a temp of ${temp} and a ${precip}% chance of rain.`
+                forecast: `${description} with a current temperature of ${temp} F, a humidity of ${humidity}%, and a ${precip}% chance of rain.`
             })
         })
     })
